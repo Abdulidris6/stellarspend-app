@@ -6,6 +6,16 @@ jest.mock("@/lib/api/client", () => ({
   fetchBalances: jest.fn(),
 }));
 
+// BalancesWidget subscribes to the Horizon account stream on mount. Left
+// unmocked, the real module reaches through the mocked client for
+// getConnectedPublicKey and throws before the widget renders.
+jest.mock("@/lib/stellar/accountStream", () => ({
+  __esModule: true,
+  startAccountStream: jest.fn(),
+  subscribeAccountStream: jest.fn(() => jest.fn()),
+  subscribeAccountStreamStatus: jest.fn(() => jest.fn()),
+}));
+
 const mockedFetchBalances = fetchBalances as jest.MockedFunction<
   typeof fetchBalances
 >;
