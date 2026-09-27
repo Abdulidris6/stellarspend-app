@@ -60,7 +60,7 @@ describe('SendPaymentModal spending limit checks', () => {
 
     // Enter recipient (exact 56 chars starting with G)
     const validRecipient = 'G' + 'A'.repeat(55);
-    const recipientInput = screen.getByPlaceholderText('G...');
+    const recipientInput = screen.getByPlaceholderText('G... Stellar public key');
     fireEvent.change(recipientInput, {
       target: { value: validRecipient },
     });
@@ -81,4 +81,20 @@ describe('SendPaymentModal spending limit checks', () => {
       ).toBeInTheDocument();
     });
   });
+
+  test('renders recipient input with placeholder="G... Stellar public key"', () => {
+    render(
+      <WalletProvider>
+        <NotificationProvider>
+          <OfflineProvider>
+            <SendPaymentModal onClose={jest.fn()} />
+          </OfflineProvider>
+        </NotificationProvider>
+      </WalletProvider>
+    );
+
+    const recipientInput = screen.getByPlaceholderText('G... Stellar public key');
+    expect(recipientInput).toBeInTheDocument();
+  });
 });
+
