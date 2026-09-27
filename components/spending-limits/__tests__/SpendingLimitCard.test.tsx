@@ -31,7 +31,7 @@ describe('SpendingLimitCard', () => {
     const onDelete = jest.fn();
     render(<SpendingLimitCard limit={mockLimit} onDelete={onDelete} />);
 
-    const deleteBtn = screen.getByRole('button', { name: /Delete USDC limit/i });
+    const deleteBtn = screen.getByRole('button', { name: /Delete (spending|USDC) limit/i });
     fireEvent.click(deleteBtn);
 
     expect(screen.getByText(/Delete this limit\?/i)).toBeInTheDocument();
