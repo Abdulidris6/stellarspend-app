@@ -81,4 +81,20 @@ describe('SendPaymentModal spending limit checks', () => {
       ).toBeInTheDocument();
     });
   });
+
+  test('renders memo input with placeholder="Optional — max 28 bytes"', () => {
+    render(
+      <WalletProvider>
+        <NotificationProvider>
+          <OfflineProvider>
+            <SendPaymentModal onClose={jest.fn()} />
+          </OfflineProvider>
+        </NotificationProvider>
+      </WalletProvider>
+    );
+
+    const memoInput = screen.getByPlaceholderText('Optional — max 28 bytes');
+    expect(memoInput).toBeInTheDocument();
+  });
 });
+
