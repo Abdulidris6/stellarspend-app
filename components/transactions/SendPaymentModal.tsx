@@ -9,7 +9,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { getRemaining, recordSpend } from "@/lib/stellar/spendingLimitsContract";
 import {
   fetchPaymentFee,
-  PAYMENT_CONFIRMED_EVENT,
   PAYMENT_SUBMITTED_EVENT,
   type PaymentStatus,
   type PendingPayment,
@@ -241,6 +240,7 @@ export default function SendPaymentModal({ onClose }: SendPaymentModalProps) {
                   <input
                     id="payment-amount"
                     type="number"
+                    inputMode="decimal"
                     min="0"
                     step="0.0000001"
                     placeholder="0.00"
