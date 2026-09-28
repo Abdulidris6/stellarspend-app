@@ -287,17 +287,30 @@ export default function BalancesWidget() {
       )}
 
       {/* Asset cards grid */}
-      <div
-        data-testid="balances-grid"
-        aria-busy={loading || !data}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-3"
-      >
-        {loading || !data
-          ? [0, 1, 2].map((i) => <SkeletonCard key={i} />)
-          : data.balances.map((asset, i) => (
-              <AssetCard key={asset.asset} asset={asset} index={i} />
-            ))}
-      </div>
+      {loading || !data ? (
+        <div
+          role="status"
+          aria-label="Loading balances"
+          aria-live="polite"
+          aria-busy="true"
+          data-testid="balances-grid"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+        >
+          {[0, 1, 2].map((i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      ) : (
+        <div
+          data-testid="balances-grid"
+          aria-busy="false"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+        >
+          {data.balances.map((asset, i) => (
+            <AssetCard key={asset.asset} asset={asset} index={i} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
