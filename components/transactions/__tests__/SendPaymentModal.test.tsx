@@ -82,7 +82,8 @@ describe('SendPaymentModal spending limit checks', () => {
     });
   });
 
-  test('renders recipient input with placeholder="G... Stellar public key"', () => {
+  test('renders memo input with placeholder="Optional — max 28 bytes"', () => {
+  test('renders amount input with inputMode="decimal" for mobile numeric keyboard', () => {
     render(
       <WalletProvider>
         <NotificationProvider>
@@ -93,8 +94,8 @@ describe('SendPaymentModal spending limit checks', () => {
       </WalletProvider>
     );
 
-    const recipientInput = screen.getByPlaceholderText('G... Stellar public key');
-    expect(recipientInput).toBeInTheDocument();
+    const memoInput = screen.getByPlaceholderText('Optional — max 28 bytes');
+    expect(memoInput).toBeInTheDocument();
   });
 });
 
