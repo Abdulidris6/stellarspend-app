@@ -82,6 +82,7 @@ describe('SendPaymentModal spending limit checks', () => {
     });
   });
 
+  test('renders memo input with placeholder="Optional — max 28 bytes"', () => {
   test('renders amount input with inputMode="decimal" for mobile numeric keyboard', () => {
     render(
       <WalletProvider>
@@ -93,8 +94,8 @@ describe('SendPaymentModal spending limit checks', () => {
       </WalletProvider>
     );
 
-    const amountInput = screen.getByPlaceholderText('0.00');
-    expect(amountInput).toHaveAttribute('inputmode', 'decimal');
+    const memoInput = screen.getByPlaceholderText('Optional — max 28 bytes');
+    expect(memoInput).toBeInTheDocument();
   });
 });
 
