@@ -81,4 +81,20 @@ describe('SendPaymentModal spending limit checks', () => {
       ).toBeInTheDocument();
     });
   });
+
+  test('renders amount input with inputMode="decimal" for mobile numeric keyboard', () => {
+    render(
+      <WalletProvider>
+        <NotificationProvider>
+          <OfflineProvider>
+            <SendPaymentModal onClose={jest.fn()} />
+          </OfflineProvider>
+        </NotificationProvider>
+      </WalletProvider>
+    );
+
+    const amountInput = screen.getByPlaceholderText('0.00');
+    expect(amountInput).toHaveAttribute('inputmode', 'decimal');
+  });
 });
+

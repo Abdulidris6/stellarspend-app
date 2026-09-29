@@ -240,6 +240,7 @@ export default function SendPaymentModal({ onClose }: SendPaymentModalProps) {
                   <input
                     id="payment-amount"
                     type="number"
+                    inputMode="decimal"
                     min="0"
                     step="0.0000001"
                     inputMode="decimal"
