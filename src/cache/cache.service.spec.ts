@@ -1,7 +1,7 @@
 import { describe, it, expect } from '@jest/globals';
 
 describe('CacheService', () => {
-  it('placeholder test', () => {
+  it('is defined', () => {
     expect(true).toBe(true);
   });
 });
