@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "docs/373-jsdoc-categories-contract",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "docs/373-jsdoc-categories-contract": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "docs/373-jsdoc-categories-contract",
+    "origin"
+  ]
+}
